@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<CRUD.Models.Employee>
+
+<div class="container-fluid col-ld-8 my-3">
+    <h1 class="display-4 fw-bolder mb-3">Employee</h1>
+    <hr>
+    <a asp-controller="Home" asp-action="ADD" class="btn btn-primary btn-sm">+ Add Employee</button></a>
+
+</div>
+<div class="container bg-dark rounded">
+   
+    <table class="table table-dark caontainer-fluid col-ld-8">
+        <thead>
+            <tr>
+                <th scope="col">E-ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Department</th>
+                <th scope="col">Designation</th>
+                <th scope="col" class="text-center">Delete</th>
+                <th scope="col" class="text-center">Update</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var value in Model)
+            {
+                <tr>
+                    <th scope="col">@value.Id</th>
+                    <td scope="row">@value.EName</td>
+                    <td>@value.EEmail</td>
+                    <td>@value.EDesig</td>
+                    <td>@value.EDesig</td>
+                    <td class="text-center"><a asp-action="delete" asp-route-id="@value.Id" asp-controller="Home"><button class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i></button></a></td>
+                    <td class="text-center"><a asp-action="edit" asp-route-id="@value.Id" asp-controller="Home"><button class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></button></a></td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
